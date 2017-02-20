@@ -55,3 +55,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'exception_notification'
+
+gem 'bootstrap-sass'
+gem "font-awesome-rails"
