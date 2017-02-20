@@ -60,3 +60,7 @@ gem 'bootstrap-sass'
 gem "font-awesome-rails"
 
 gem "haml-rails"
+
+# https://github.com/amatsuda/kaminari
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
