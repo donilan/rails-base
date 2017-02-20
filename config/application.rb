@@ -4,7 +4,9 @@ require 'yaml'
 env_file = File.expand_path("../local_env.yml", __FILE__)
 raise "Missing local_env.yml file, please copy it from sample!" unless File.exists?(env_file)
 YAML.load(File.open(env_file)).each do |key, value|
-  ENV[key.to_s] ||= value.to_s unless value.blank?
+  next if value.nil?
+  next if value.is_a?(String) && value.strip! == ''
+  ENV[key.to_s] ||= value.to_s
 end
 
 require 'rails/all'
@@ -46,7 +48,7 @@ module AccountablyWeb
         :address => ENV["SMTP_HOST"],
         :user_name => ENV["SMTP_USERNAME"],
         :password => ENV["SMTP_PASSWORD"],
-        :port => ENV["SMTP_PORT"] && ENV["SMTP_PORT"].to_i,
+        :port => ENV["SMTP_PORT"] && ENV["SMTP_PORT"],
         :domain => ENV["SMTP_DOMAIN"],
         :authentication => ENV['SMTP_AUTHENTICATION'] && ENV['SMTP_AUTHENTICATION'].to_sym,
         :ssl => true,
