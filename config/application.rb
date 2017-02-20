@@ -4,7 +4,7 @@ require 'yaml'
 env_file = File.expand_path("../local_env.yml", __FILE__)
 raise "Missing local_env.yml file, please copy it from sample!" unless File.exists?(env_file)
 YAML.load(File.open(env_file)).each do |key, value|
-  ENV[key.to_s] ||= value.to_s
+  ENV[key.to_s] ||= value.to_s unless value.blank?
 end
 
 require 'rails/all'
@@ -25,7 +25,7 @@ module AccountablyWeb
     # config.time_zone = ''
 
     # exception notification
-    if ENV['NOTIFICATION_EMAIL_PREFIX'] && ENV['NOTIFICATION_EMAIL_SENDER'] && ENV['NOTIFICATION_EMAIL_RECIPIENTS']
+    if ENV['ENABLE_NOTIFICATION']
       config.middleware.use ExceptionNotification::Rack,
                             :email => {
                               :email_prefix => ENV['NOTIFICATION_EMAIL_PREFIX'],
@@ -41,7 +41,7 @@ module AccountablyWeb
     end
 
     # email
-    if ENV["SMTP_HOST"] && ENV["SMTP_USERNAME"] && ENV["SMTP_PASSWORD"] && ENV["SMTP_PORT"]
+    if ENV['ENABLE_SMTP']
       ActionMailer::Base.smtp_settings = {
         :address => ENV["SMTP_HOST"],
         :user_name => ENV["SMTP_USERNAME"],
