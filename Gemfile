@@ -58,3 +58,5 @@ gem 'exception_notification'
 
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
+
+gem "haml-rails"
