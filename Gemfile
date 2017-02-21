@@ -73,3 +73,5 @@ gem 'simple_form'
 
 # https://github.com/ryanb/nested_form
 gem 'nested_form'
+
+gem "thor", '= 0.19.1'
