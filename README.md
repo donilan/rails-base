@@ -1,24 +1,19 @@
-# README
+# How to use this project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+just clone this project and use bundle install everything before you want to start it.
 
-Things you may want to cover:
+``` bash
+bundle install
+```
 
-* Ruby version
+then setup via script below
 
-* System dependencies
+``` bash
+bin/setup
+```
 
-* Configuration
+finally you can start with by
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+``` bash
+guard
+```
