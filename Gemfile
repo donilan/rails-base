@@ -67,3 +67,6 @@ gem 'bootstrap-kaminari-views'
 
 # https://github.com/plataformatec/simple_form
 gem 'simple_form'
+
+# https://github.com/ryanb/nested_form
+gem 'nested_form'
