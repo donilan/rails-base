@@ -64,3 +64,6 @@ gem "haml-rails"
 # https://github.com/amatsuda/kaminari
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
+
+# https://github.com/plataformatec/simple_form
+gem 'simple_form'
