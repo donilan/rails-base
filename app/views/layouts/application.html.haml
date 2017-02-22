@@ -2,10 +2,11 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title AccountablyWeb
+    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", :name => "viewport"}
+    %title= @title.nil? ? 'Title' : @title
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
+  %body{ class: [controller.class.parent.to_s.underscore.gsub('_', '-'), controller.controller_name.dasherize, controller.action_name, @body_classes].join(' ') }
     = render('shared/flash')
     = yield
