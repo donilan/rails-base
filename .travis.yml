@@ -1,0 +1,16 @@
+language: ruby
+rvm:
+  - 2.2.2
+  - 2.2.3
+  - 2.2.4
+  - 2.3.1
+  - 2.3.2
+  - 2.3.3
+branches:
+  only:
+    - 'master'
+before_script:
+  - "cp config/local_env.yml.sample config/local_env.yml"
+  - "bundle exec rake db:create RAILS_ENV=test"
+  - "bundle exec rake db:migrate RAILS_ENV=test"
+script: "bundle exec rspec"
