@@ -1,0 +1,34 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %title= @title.nil? ? 'Title' : @title
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0", name: "viewport"}
+    = csrf_meta_tags
+    = stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'admin-print', media: 'print', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'admin', 'data-turbolinks-track': 'reload'
+
+  %body{ class: [controller.class.parent.to_s.underscore.gsub('_', '-'), controller.controller_name.dasherize, controller.action_name, @body_classes].join(' ') }
+    = render 'shared/top_navbar'
+    - if content_for?(:full_page)
+      = yield :full_page
+    - else
+      .container
+        - if content_for?(:page_title) || content_for?(:page_actions)
+          .content-header
+            .row
+              - if content_for?(:page_title)
+                %h4{class: content_for?(:page_actions) ? 'col-sm-6' : 'col-sm-12'}
+                  = yield :page_title
+              - if content_for?(:page_actions)
+                .page-actions.col-sm-6= yield :page_actions
+              - if content_for?(:page_tabs)
+                %ul.nav.nav-tabs=yield :page_tabs
+        .row
+          %div{class: content_for?(:sidebar) ? 'col-md-9 col-sm-8' : 'col-sm-12'}
+            = yield
+          - if content_for?(:sidebar)
+            .col-md-3.col-sm-4
+              %aside= yield :sidebar
