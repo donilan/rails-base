@@ -17,9 +17,12 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
+require 'devise'
+require File.expand_path('../support/devise_request_spec_helpers', __FILE__)
+
 # simplecov start
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start 'rails'
 # simplecov end
 
 RSpec.configure do |config|
@@ -102,4 +105,9 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
+  config.include DeviseRequestSpecHelpers, type: :request
+
 end
