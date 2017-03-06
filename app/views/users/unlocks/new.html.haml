@@ -1,0 +1,8 @@
+= simple_form_for(resource, as: resource_name, url: user_unlock_path(resource_name), html: { method: :post }) do |f|
+  %h3 Resend unlock instructions
+  = f.error_notification
+  = f.full_error :unlock_token
+  .form-inputs
+    = f.input :email, required: true, autofocus: true
+  .form-actions
+    = f.button :submit, "Resend unlock instructions", class: 'btn-primary btn-block'

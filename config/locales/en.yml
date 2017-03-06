@@ -20,4 +20,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  signin_title: Please Signin
+  signpu_title: Signup
+  forgot_password_title: Forgot Password
+  signin_default_username: Username
+  signin_default_password: Password
+  signin: Signin
+  signup: Signup
+  forgot_your_password: Forgot your password?
+  send_me_reset_password_instructions: Send me reset password instructions
+  didnot_receive_confirmation_instructions: "Didn't receive confirmation instructions"
+  didnot_receive_unlock_instructions: "Didn't receive unlock instructions"

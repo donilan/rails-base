@@ -1,0 +1,9 @@
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  %h3= t(:signup_title)
+  = f.error_notification
+  .form-inputs
+    = f.input :email, required: true, autofocus: true
+    = f.input :password, required: true
+    = f.input :password_confirmation, required: true
+  .form-actions
+    = f.button :submit, t(:signup), class: 'btn-primary btn-block'
