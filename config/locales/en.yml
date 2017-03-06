@@ -23,10 +23,11 @@ en:
   signin_title: Please Signin
   signpu_title: Signup
   forgot_password_title: Forgot Password
-  signin_default_username: Username
-  signin_default_password: Password
-  signin: Signin
-  signup: Signup
+  signin_default_username: admin
+  signin_default_password: password
+  signin: Sign In
+  signup: Sign Up
+  signout: Sign Out
   forgot_your_password: Forgot your password?
   send_me_reset_password_instructions: Send me reset password instructions
   didnot_receive_confirmation_instructions: "Didn't receive confirmation instructions"

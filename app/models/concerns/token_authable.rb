@@ -1,4 +1,4 @@
-module AuthToken
+module TokenAuthable
   extend ActiveSupport::Concern
   included do
     AUTH_TOKEN_EXPIRED_TIME = 2.minutes

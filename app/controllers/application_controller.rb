@@ -2,9 +2,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :token_auth
+  before_action :set_locale
   after_action :prepare_unobtrusive_flash
 
   protected
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
 
   def token_auth
     # return user_signed_in?

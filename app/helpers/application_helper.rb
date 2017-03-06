@@ -5,18 +5,21 @@ module ApplicationHelper
     super( objects, options )
   end
 
-  def alert_class(type)
-    case type
-    when "error", 'alert'
-      return "alert-danger"
-    when 'success'
-      return "alert-success"
-    when 'info', "notice"
-      return 'alert-info'
-    when 'warning'
-      return "alert-warning"
-    else
-      Rails.logger.error "flash type '#{type}' not avaliable, please use one of 'error', 'success', 'info' or 'notice'"
+  def bootstrap_class_for flash_type
+    { success: "alert-success", error: "alert-danger", alert: "alert-warning", notice: "alert-info" }[flash_type.to_sym] || flash_type.to_s
+  end
+
+  def flash_messages(opts = {})
+    flash.each do |msg_type, message|
+      concat(content_tag(:div, message, class: "alert #{bootstrap_class_for(msg_type)} alert-dismissible", role: 'alert') do
+               concat(content_tag(:button, class: 'close', data: { dismiss: 'alert' }) do
+                        concat content_tag(:span, '&times;'.html_safe, 'aria-hidden' => true)
+                        concat content_tag(:span, 'Close', class: 'sr-only')
+                      end)
+               concat message
+             end)
     end
+    flash.clear
+    nil
   end
 end

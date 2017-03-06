@@ -1,0 +1,21 @@
+zh-CN:
+  activerecord:
+    models:
+      user: "用户"
+    attributes:
+      attribute_commons: &commons
+        updated_at: "最后更新"
+        created_at: "创建时间"
+        available_on: "生效时间"
+        expired_on: "失效时间"
+        position: "展示顺序"
+      user:
+        <<: *commons
+        login: "登录账号"
+        password: "登录密码"
+        username: "登录名"
+        phone: "手机号码"
+        email: "电子邮箱"
+        level: "VIP等级"
+        user_type: "用户类型"
+        remember_me: "记录登录状态"

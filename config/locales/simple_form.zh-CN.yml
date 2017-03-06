@@ -1,0 +1,47 @@
+en:
+  simple_form:
+    "yes": '是'
+    "no": '否'
+    required:
+      text: '必填'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "请查看错误提示:"
+    # labels:
+    #   defaults:
+    #     login: '邮箱地址、电话号码或者用户名'
+    #     password: '密码'
+    #     password_confirmation: "确认密码"
+    #     remember_me: "记录登录状态"
+    #   user:
+    #     new:
+    #       email: 'E-mail to sign in.'
+    #     edit:
+    #       email: 'E-mail.'
+
+    hints:
+      defaults:
+        login: '邮箱地址、电话号码或者用户名'
+        username: '登录的用户名'
+        password: '最少输入6位字母'
+    placeholders:
+      defaults:
+        username: '用户名'
+        login: '邮箱地址、电话号码或者用户名'
+        password: '密码'
+  helpers:
+    submit:
+      users:
+        sessions:
+          new: 'Signin'
+      user:
+        create: 'Sign Up'
+    # include_blanks:
+    #   defaults:
+    #     age: 'Rather not say'
+    # prompts:
+    #   defaults:
+    #     age: 'Select your age'

@@ -1,0 +1,15 @@
+zh-CN:
+  signin_title: 请您登录
+  signup_title: 注册
+  forgot_password_title: 忘记密码
+  signin_default_username: admin
+  signin_default_password: password
+  signin: 登录
+  signup: 注册
+  signout: 登出
+  forgot_your_password: 邮箱找回忘记的密码？
+  send_me_reset_password_instructions: 发送重置密码指引到我的邮箱
+  didnot_receive_confirmation_instructions: 没有收到确认邮件
+  didnot_receive_unlock_instructions: 没有收到解锁邮件
+  resend_unlock_instructions: 重发解锁邮件
+  resend_confirmation_instructions: 重发确认邮件
