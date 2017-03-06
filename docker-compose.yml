@@ -1,0 +1,23 @@
+version: '2'
+services:
+  db:
+    image: postgres:9.4.1
+    volumes:
+      - ./tmp/pq-data:/var/lib/postgresql/data
+  app:
+    build: .
+    links:
+      - db
+    ports:
+      - "80:3000"
+    # env_file: .env
+    environment:
+      - RAILS_ENV=production
+      - DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+      - RAILS_SERVE_STATIC_FILES=true
+      - SECRET_KEY_BASE=f8b871570c1db6c18b7969c913a96ddbc47e6236d01dfd9a3192694268ac65ef90b49789eddcf28c6a8b4c081e07a8dd8bd7c0460f1cbe585d8dbc93b8c72564
+      - DB_ADAPTER=postgresql
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=
+      - DB_HOST=db
+      - DB_NAME=myapp_production

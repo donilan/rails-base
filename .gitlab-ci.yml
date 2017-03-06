@@ -1,0 +1,45 @@
+stages:
+  - test
+  - build
+  - deploy
+
+rspec:
+  stage: test
+  image: "ruby:2.3"
+  tags:
+    - docker
+  services:
+    - postgres:latest
+  variables:
+    POSTGRES_DB: test_db
+    DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/$POSTGRES_DB"
+  before_script:
+    - ruby -v
+    - gem install bundler  --no-ri --no-rdoc
+    - bundle install -j $(nproc) --path /cache/bundle
+
+  script:
+    - bundle exec rake db:migrate
+    # - bundle exec rake db:seed
+    - rspec spec
+
+docker-build:
+  stage: build
+  tags:
+    - shell
+  only:
+    - master
+  before_script:
+    - docker info
+  script:
+    - echo docker push
+
+doploy-staging:
+  stage: deploy
+  # when: manual
+  only:
+    - master
+  tags:
+    - shell
+  script:
+    - echo docker deploy
