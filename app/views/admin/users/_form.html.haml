@@ -1,0 +1,10 @@
+= simple_nested_form_for [:admin, @user]  do |f|
+  = f.error_notification
+  %fieldset
+    = f.input :username
+    = f.input :phone
+    = f.input :email
+    = f.input :role
+  .buttons
+    = f.submit class: 'btn btn-primary'
+    = link_to t('.cancel'), admin_users_path

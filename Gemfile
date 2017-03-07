@@ -74,7 +74,10 @@ gem 'exception_notification'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
 
-gem "haml-rails"
+gem 'hamlit-rails'
+
+# https://github.com/activerecord-hackery/ransack
+gem 'ransack'
 
 # https://github.com/amatsuda/kaminari
 gem 'kaminari'

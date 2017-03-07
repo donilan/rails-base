@@ -7,5 +7,7 @@
         %span.icon-bar
         %span.icon-bar
       %a.navbar-brand{:href => admin_root_path } Title
+    %ul.nav.navbar-nav
+      %li= link_to User.model_name.human, admin_users_path
     %ul.nav.navbar-nav.navbar-right
       %li= link_to t(:signout), destroy_user_session_path, data: { method: :delete }

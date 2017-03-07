@@ -1,0 +1,33 @@
+= content_for :page_title do
+  = t '.title'
+= content_for :page_actions do
+  .row
+    .col-md-6
+      = search_form_for [:admin, @q] do |f|
+        .input-group
+          = f.search_field :phone_cont, class: 'form-control'
+          %span.input-group-btn= f.submit class: 'btn btn-default'
+    .col-md-6
+      = link_to t('.add'), new_admin_user_path
+
+
+%table.table
+  %thead
+    %tr
+      %th= User.model_name.human
+      %th= sort_link @q, :username
+      %th= sort_link @q, :email
+      %th= sort_link @q, :phone
+      %th= sort_link @q, :role
+      %th= t(:operation)
+  %tbody
+    - @users.each do |u|
+      %tr
+        %td= link_to u.to_s, admin_user_path(u)
+        %td= u.username
+        %td= u.email
+        %td= u.phone
+        %td= u.role
+        %td
+          = link_to t('.edit'), edit_admin_user_path(u)
+= paginate @users

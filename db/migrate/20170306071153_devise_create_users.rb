@@ -35,6 +35,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :auth_token
       t.datetime :auth_token_expired_at
 
+      t.string :role
+
       t.timestamps null: false
     end
 

@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20170306071153) do
     t.datetime "locked_at"
     t.string   "auth_token"
     t.datetime "auth_token_expired_at"
+    t.string   "role"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true
