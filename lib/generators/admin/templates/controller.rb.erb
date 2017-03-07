@@ -1,4 +1,4 @@
-class Admin::<%= name.pluralize.camelize %>Controller < AdminController
+class Admin::<%= controller_class_name %>Controller < AdminController
   before_action :set_<%= singular_table_name %>, only: [:show, :edit, :update, :destroy]
 
   # GET <%= prefixed_route_url %>

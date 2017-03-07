@@ -1,5 +1,5 @@
 = content_for :page_title do
-  = t '.title'
+  = t('.title', model: User.model_name.human)
 = content_for :page_actions do
   = link_to t('.add'), new_admin_user_path, class: 'btn btn-primary'
 

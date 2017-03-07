@@ -9,26 +9,26 @@ zh-CN:
         available_on: "生效时间"
         expired_on: "失效时间"
         position: "展示顺序"
-        username: username
-        email: email
-        phone: phone
-        role: role
-        last_sign_in_at: last_sign_in_at
-        last_sign_in_ip: last_sign_in_ip
-        auth_token_expired_at: auth_token_expired_at
+        username:
+        email:
+        phone:
+        role:
+        last_sign_in_at:
+        last_sign_in_ip:
+        auth_token_expired_at:
   helpers:
     users:
       submit:
-        create: 添加
-        update: 更新
+        create: "添加"
+        update: "更新"
   admin:
     users:
       index:
-        title: 数据管理列表
-        add: 添加
-        edit: 编辑
-        delete: 删除
+        title: "%{model}管理列表"
+        add: "添加"
+        edit: "编辑"
+        delete: "删除"
       new:
-        cancel: 返回列表
+        cancel: "返回列表"
       edit:
-        cancel: 返回列表
+        cancel: "返回列表"
