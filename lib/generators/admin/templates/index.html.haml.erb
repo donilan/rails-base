@@ -11,7 +11,7 @@
   %tbody
     - @<%= name.pluralize %>.each do |obj|
       %tr<% attributes.each do |attr| %><% if [:datetime, :time, :date].include? attr.type %>
-        %td{ title: obj.<%= attr.name %> }= l obj.<%= attr.name %><% else %>
+        %td{ title: obj.<%= attr.name %> }= obj.<%= attr.name %> && l(obj.<%= attr.name %>)<% else %>
         %td= obj.<%= attr.name %><% end %><% end %>
         %td
           = link_to t('.edit'), edit_admin_<%= name %>_path(obj), class: 'btn btn-primary btn-sm'
