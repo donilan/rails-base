@@ -1,0 +1,7 @@
+= simple_form_for [:admin, @<%= singular_table_name %>]  do |f|
+  = f.error_notification
+  %fieldset<% attributes.each do |attr| %>
+    = f.input :<%= attr.name %><% end %>
+  .buttons
+    = f.submit class: 'btn btn-primary'
+    = link_to t('.cancel'), admin_<%= name.pluralize %>_url, class: 'btn btn-default'

@@ -1,51 +1,51 @@
 class Admin::UsersController < AdminController
-  before_action :prepare, only: [:edit, :update, :show, :remove_wechat]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  # GET /admin/users
   def index
-    @q = User.all.ransack(params[:q])
+    @q = User.ransack(params[:q])
     @users = @q.result(distinct: true).page(params[:page])
   end
 
+  # GET /admin/users/new
   def new
     @user = User.new
   end
 
+  # POST /admin/users
   def create
     @user = User.new(user_params)
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to admin_users_path, notice: t(:create_success)}
-        format.json { render json: { status: :created } }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+
+    if @user.save
+      redirect_to [:admin, @user], notice: t(:create_success)
+    else
+      render action: 'new'
     end
   end
 
+ # PATCH/PUT /admin/users/1
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to admin_users_path, notice: t(:update_success) }
-        format.json { render json: { status: :ok } }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.update(user_params)
+      redirect_to [:admin, @user], notice: t(:update_success)
+    else
+      render action: 'edit'
     end
   end
 
-  def remove_wechat
-    wechat = @user.wechats.find(params[:wechat_id])
-    wechat.delete
-    redirect_to admin_user_path(@user), notice: t(:delete_success)
+  # DELETE /admin/users/1
+  def destroy
+    @user.destroy
+    redirect_to admin_users_url, notice: t(:delete_success)
   end
 
   protected
-  def user_params
-    params.require(:user).permit(:username, :phone, :email, :level, :role_id)
-  end
-  def prepare
-    @user = User.find(params[:id])
-  end
+  # Use callbacks to share common setup or constraints between actions.
+    def set_user
+      @user = User.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def user_params
+      params.require(:user).permit(:username, :email, :phone, :role, :last_sign_in_at, :last_sign_in_ip, :auth_token_expired_at)
+    end
 end

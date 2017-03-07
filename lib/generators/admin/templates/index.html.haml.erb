@@ -1,0 +1,18 @@
+= content_for :page_title do
+  = t '.title'
+= content_for :page_actions do
+  = link_to t('.add'), new_admin_<%= name %>_path, class: 'btn btn-primary'
+
+%table.table.table-striped.table-hover.table-condensed
+  %thead
+    %tr<% attributes.each do |attr| %>
+      %th= sort_link @q, :<%= attr.name %><% end %>
+      %th= t(:operation)
+  %tbody
+    - @<%= name.pluralize %>.each do |obj|
+      %tr<% attributes.each do |attr| %>
+        %td= obj.<%= attr.name %><% end %>
+        %td
+          = link_to t('.edit'), edit_admin_<%= name %>_path(obj), class: 'btn btn-primary btn-sm'
+          = link_to t('.delete'), admin_<%= name %>_path(obj), class: 'btn btn-danger btn-sm', data: { confirm: t(:are_you_sure), method: :delete }
+= paginate @<%= name.pluralize %>
