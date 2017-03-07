@@ -17,7 +17,7 @@ class Admin::<%= controller_class_name %>Controller < AdminController
     @<%= singular_table_name %> = <%= orm_class.build(class_name, "#{singular_table_name}_params") %>
 
     if @<%= orm_instance.save %>
-      redirect_to <%= "[:#{prefix}, @#{singular_table_name}]" %>, notice: t(:create_success)
+      redirect_to <%= prefixed_index_helper %>_url, notice: t(:create_success)
     else
       render action: 'new'
     end
@@ -26,7 +26,7 @@ class Admin::<%= controller_class_name %>Controller < AdminController
  # PATCH/PUT <%= prefixed_route_url %>/1
   def update
     if @<%= orm_instance.update("#{singular_table_name}_params") %>
-      redirect_to <%= "[:#{prefix}, @#{singular_table_name}]" %>, notice: t(:update_success)
+      redirect_to <%= prefixed_index_helper %>_url, notice: t(:update_success)
     else
       render action: 'edit'
     end
