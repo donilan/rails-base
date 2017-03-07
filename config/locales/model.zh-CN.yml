@@ -19,3 +19,7 @@ zh-CN:
         level: "VIP等级"
         user_type: "用户类型"
         remember_me: "记录登录状态"
+        role: 角色
+        last_sign_in_at: 最后登录时间
+        last_sign_in_ip: 最后登录IP
+        auth_token_expired_at: Token过期时间

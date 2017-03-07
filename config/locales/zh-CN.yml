@@ -1,4 +1,19 @@
 zh-CN:
+  datetime:
+    formats:
+      default: "%Y-%m-%d %H:%M:%S"
+  time:
+    formats:
+      default: "%Y-%m-%d %H:%M:%S"
+      time: "%H:%M:%S"
+      short_time: "%H:%M"
+      date: "%Y-%m-%d"
+  "true": "是"
+  "false": "否"
+  update_success: "数据更新成功"
+  create_success: "数据保存成功"
+  delete_success: "数据删除成功"
+  operation: 操作
   signin_title: 请您登录
   signup_title: 注册
   forgot_password_title: 忘记密码
