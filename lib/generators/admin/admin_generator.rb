@@ -17,6 +17,7 @@ class AdminGenerator < Rails::Generators::NamedBase
     template "_form.html.haml.erb", File.join("app/views", prefix, controller_file_path, '_form.html.haml')
     template "new.html.haml.erb", File.join("app/views", prefix, controller_file_path, 'new.html.haml')
     template "edit.html.haml.erb", File.join("app/views", prefix, controller_file_path, 'edit.html.haml')
+    template "locale.zh-CN.yml.erb", "config/locales/model_#{controller_file_path}.zh-CN.yml"
   end
 
   protected

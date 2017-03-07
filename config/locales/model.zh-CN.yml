@@ -1,7 +1,7 @@
 zh-CN:
   activerecord:
-    models:
-      user: "用户"
+    # models:
+    #   user: "用户"
     attributes:
       attribute_commons: &commons
         updated_at: "最后更新"
@@ -9,17 +9,17 @@ zh-CN:
         available_on: "生效时间"
         expired_on: "失效时间"
         position: "展示顺序"
-      user:
-        <<: *commons
-        login: "登录账号"
-        password: "登录密码"
-        username: "登录名"
-        phone: "手机号码"
-        email: "电子邮箱"
-        level: "VIP等级"
-        user_type: "用户类型"
-        remember_me: "记录登录状态"
-        role: 角色
-        last_sign_in_at: 最后登录时间
-        last_sign_in_ip: 最后登录IP
-        auth_token_expired_at: Token过期时间
+      # user:
+      #   <<: *commons
+      #   login: "登录账号"
+      #   password: "登录密码"
+      #   username: "登录名"
+      #   phone: "手机号码"
+      #   email: "电子邮箱"
+      #   level: "VIP等级"
+      #   user_type: "用户类型"
+      #   remember_me: "记录登录状态"
+      #   role: 角色
+      #   last_sign_in_at: 最后登录时间
+      #   last_sign_in_ip: 最后登录IP
+      #   auth_token_expired_at: Token过期时间

@@ -1,0 +1,28 @@
+zh-CN:
+  activerecord:
+    models:
+      <%= name %>: <%= name.pluralize %>
+    attributes:
+      <%= name %>:
+        updated_at: "最后更新"
+        created_at: "创建时间"
+        available_on: "生效时间"
+        expired_on: "失效时间"
+        position: "展示顺序"<% attributes.each do |attr| %>
+        <%= attr.name %>: <%= attr.name %><% end %>
+  helpers:
+    <%= name.pluralize %>:
+      submit:
+        create: 添加
+        update: 更新
+  admin:
+    <%= name.pluralize %>:
+      index:
+        title: 数据管理列表
+        add: 添加
+        edit: 编辑
+        delete: 删除
+      new:
+        cancel: 返回列表
+      edit:
+        cancel: 返回列表

@@ -21,9 +21,9 @@
         %td= obj.email
         %td= obj.phone
         %td= obj.role
-        %td= l obj.last_sign_in_at
+        %td{ title: obj.last_sign_in_at }= l obj.last_sign_in_at
         %td= obj.last_sign_in_ip
-        %td= l obj.auth_token_expired_at
+        %td{ title: obj.auth_token_expired_at }= l obj.auth_token_expired_at
         %td
           = link_to t('.edit'), edit_admin_user_path(obj), class: 'btn btn-primary btn-sm'
           = link_to t('.delete'), admin_user_path(obj), class: 'btn btn-danger btn-sm', data: { confirm: t(:are_you_sure), method: :delete }
