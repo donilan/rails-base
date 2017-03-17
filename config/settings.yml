@@ -1,0 +1,27 @@
+# Please override this in config/settings/production.yml
+host: localhost:3000
+
+
+db:
+  adapter: sqlite3
+  dev_database: db/vpass_dev.sqlite3
+  test_database: db/vpass_test.sqlite3
+  # production
+  database: vpass_production
+
+notification:
+  enabled: false
+  email_prefix: "[ VPass Staging ]"
+  sender_address: "no-reply@vtoplabs.com"
+  exception_recipients: "dev@vtoplabs.com"
+
+smtp:
+  enabled: false
+  # mailcacher
+  address: localhost
+  port: 1025
+
+gitlab:
+  site: https://gitlab.ii2d.com
+  app_id: 154db2dd12431c950137325c0c544d2f429c4743c89b9b6d7d74e2ea162c9e81
+  secret: 64c6b5282fff4edc7467073c7f24a81e8c39fd16e9fd2a99b9d6e6e0000b7bf8

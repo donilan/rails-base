@@ -1,13 +1,13 @@
 require_relative 'boot'
-require 'yaml'
 
+require 'yaml'
 env_file = File.expand_path("../local_env.yml", __FILE__)
-raise "Missing local_env.yml file, please copy it from sample!" unless File.exists?(env_file)
 YAML.load(File.open(env_file)).each do |key, value|
   next if value.nil?
   next if value.is_a?(String) && value.strip! == ''
   ENV[key.to_s] ||= value.to_s
-end
+end if File.exists?(env_file)
+
 
 require 'rails/all'
 
@@ -28,37 +28,24 @@ module MyApp
     config.time_zone = 'Beijing'
 
 
-    # I18n.default_locale = :'us'
-    # config.time_zone = ''
-
-    # exception notification
-    if ENV['ENABLE_NOTIFICATION']
-      config.middleware.use ExceptionNotification::Rack,
-                            :email => {
-                              :email_prefix => ENV['NOTIFICATION_EMAIL_PREFIX'],
-                              :sender_address => ENV['NOTIFICATION_EMAIL_SENDER'],
-                              :exception_recipients => ENV['NOTIFICATION_EMAIL_RECIPIENTS'].split(",")
-                            }
+    if Settings.notification.enabled
+      config.middleware.use ExceptionNotification::Rack, email: Settings.notification.to_h.except(:enabled)
+      puts "exception notification is enabled with config #{Settings.notification.to_h.inspect}"
     end
 
     # default host
-    if ENV['HOST']
-      config.action_mailer.default_url_options = { host: ENV['HOST'] }
-      config.action_mailer.default_url_options.merge!(port: ENV['PORT']) if ENV['PORT']
+    if Settings.host
+      host, port = Settings.host.split(':')
+      config.action_mailer.default_url_options = { host: host }
+      config.action_mailer.default_url_options.merge!(port: port) if port
+      puts "host is set to #{host} and port is #{port || 'NOT SET'}"
     end
 
     # email
-    if ENV['ENABLE_SMTP']
-      ActionMailer::Base.smtp_settings = {
-        :address => ENV["SMTP_HOST"],
-        :user_name => ENV["SMTP_USERNAME"],
-        :password => ENV["SMTP_PASSWORD"],
-        :port => ENV["SMTP_PORT"] && ENV["SMTP_PORT"],
-        :domain => ENV["SMTP_DOMAIN"],
-        :authentication => ENV['SMTP_AUTHENTICATION'] && ENV['SMTP_AUTHENTICATION'].to_sym,
-        :ssl => true,
-        :enable_starttls_auto => true,
-      }
+    if Settings.smtp.enabled
+      config.action_mailer.delivery_method
+      config.action_mailer.smtp_settings = Settings.smtp.to_h.except(:enabled)
+      puts "SMTP is enlabled with config: #{Settings.smtp.to_h}"
     end
   end
 end
